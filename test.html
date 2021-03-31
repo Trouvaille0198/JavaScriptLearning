@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="zh_CN">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>xixi</title>
+    <title>Vue Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 </head>
 
 <body>
-    <script>
-        function Cat(name) {
-            this.name = name;
-            // this.say = function () {
-            //     alert('miao~ ' + this.name);
-            // }
-        }
-        Cat.prototype.say = function () {
-            alert('miao~ ' + this.name);
-        }
-        var cat1 = new Cat('aa');
-        var cat2 = new Cat('bb');
-        cat1.say();
-        cat2.say();
-    </script>
+    <div id="firstVue">
+        <input type="number" v-model.number="my_step" />
+        <button v-on:click="clickButton">Add</button>
+        <p>{{my_total}}</p>
+    </div>
 </body>
+<script type="text/javascript">
+    var myVue = new Vue({
+        el: '#firstVue',
+        data: {
+            my_step: 1,
+            my_total: 0
+        },
+        methods: {
+            clickButton: function () {
+                this.my_total += this.my_step
+            }
+        }
+    })
+</script>
 
 </html>
