@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf8>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+            <v-navigation-drawer fixed app v-model="drawer">
+                <v-list dense>
+                    <v-list-tile @click="switchPage('phone')">
+                        <v-list-tile-action>
+                            <v-icon>phone</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>手机大全</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                    <v-list-tile @click="switchPage('watch')">
+                        <v-list-tile-action>
+                            <v-icon>watch</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>手表大全</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                </v-list>
+            </v-navigation-drawer>
+            <v-toolbar fixed app color="primary" dark>
+                <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+                <v-toolbar-title>Vuetify实例</v-toolbar-title>
+            </v-toolbar>
+            <v-content>
+                <v-container fluid>
+                    <v-btn primary>{{page}}</v-btn>
+                </v-container>
+            </v-content>
+        </v-app>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                drawer: true,
+                page: "phone",
+            },
+            methods: {
+                switchPage(page) {
+                    this.page = page
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
